@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="NC.Wpf.AModule.Views.AView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:framework="clr-namespace:NC.Wpf.Framework.Mvvm;assembly=NC.Wpf.Framework"
+             xmlns:local="clr-namespace:NC.Wpf.AModule.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             framework:ViewModelLocator.AutoWireViewModel="True" mc:Ignorable="d">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock FontSize="24" Text="我是A模块……" />
+            <TextBlock Margin="20,0" FontSize="32" Text="{Binding HelloWorld}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+            <Button Width="100" Height="36" materialDesign:ButtonAssist.CornerRadius="18"
+                    Command="{Binding SendMessageToMainViewCommand}"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                <TextBlock Text="发送消息" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

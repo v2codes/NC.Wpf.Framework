@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Localization\AppSettingManagerSourceBuilder.cs" />
+		<Compile Remove="Localization\AppSettingManagerSourceGenerator.cs" />
+		<Compile Remove="Localization\ResourceExtensionSourceBuilder.cs" />
+		<Compile Remove="Localization\ResourceExtensionSourceGenerator.cs" />
+		<Compile Remove="Mvvm\ViewModelLocationProvider.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<!--<PackageReference Include="Microsoft.CodeAnalysis" Version="4.9.2" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" />-->
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\NC.Wpf.Core\NC.Wpf.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+</Project>
