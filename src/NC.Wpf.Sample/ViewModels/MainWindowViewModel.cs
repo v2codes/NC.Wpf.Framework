@@ -7,6 +7,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using NC.Wpf.Application.Contracts;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Threading;
 
 namespace NC.Wpf.Sample.ViewModels
 {
@@ -21,11 +22,12 @@ namespace NC.Wpf.Sample.ViewModels
         }
 
         [RelayCommand]
-        public void SampleServiceCall()
+        public async void SampleServiceCall()
         {
             try
             {
-                var result = _sampleAppService.GetAsync().Result;
+                var result = await _sampleAppService.GetAsync();
+                //var result = AsyncHelper.RunSync(() => _sampleAppService.GetAsync());
             }
             catch (Exception ex)
             {

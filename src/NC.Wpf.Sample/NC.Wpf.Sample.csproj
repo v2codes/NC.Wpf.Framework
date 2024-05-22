@@ -7,7 +7,7 @@
         <TargetFramework>net8.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
-		<!--<StartupObject>NC.Wpf.Sample.Program</StartupObject>-->
+		<StartupObject>NC.Wpf.Sample.Program</StartupObject>
     </PropertyGroup>
 
     <ItemGroup>

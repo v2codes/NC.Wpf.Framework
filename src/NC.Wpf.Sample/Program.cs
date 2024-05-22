@@ -10,13 +10,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace NC.Wpf.Sample
 {
     static class Program
     {
         private static IHost? _host;
-        private static IAbpApplicationWithExternalServiceProvider? _abpApplication;
 
         async static Task<int> Main(string[] args)
         {
@@ -44,12 +45,12 @@ namespace NC.Wpf.Sample
                 Log.Information("Starting WPF host.");
                 var builder = Host.CreateApplicationBuilder(args);
 
-                _abpApplication = await builder.Services.AddApplicationAsync<SampleModule>(options =>
-                {
-                    options.UseAutofac();
-                    options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
-                    options.Services.AddHostedService<SampleHostedServcie<App, MainWindow>>();
-                });
+                // console template
+                builder.Configuration.AddAppSettingsSecretsJson();
+                builder.Logging.ClearProviders().AddSerilog();
+                builder.ConfigureContainer(builder.Services.AddAutofacServiceProviderFactory());
+                builder.Services.AddHostedService<SampleHostedServcie<App, MainWindow>>();
+                await builder.Services.AddApplicationAsync<SampleModule>();
 
                 _host = builder.Build();
                 await _host.InitializeAsync();
