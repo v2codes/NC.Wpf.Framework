@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,13 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CompanyName" xml:space="preserve">
-    <value>苏州派迅智能科技有限公司</value>
+    <value>xxxx有限公司</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>©2024 苏州派迅智能科技有限公司 版权所有 苏ICP备15055472号-1</value>
-  </data>
-  <data name="Copyright_Simple" xml:space="preserve">
-    <value>©2024 苏州派迅智能科技有限公司</value>
+    <value>©2024 xxxx有限公司 版权所有</value>
   </data>
   <data name="V_Exit_Tooltip" xml:space="preserve">
     <value>关闭客户端</value>
@@ -135,10 +132,13 @@
   <data name="V_Login_Pwd_Placeholder" xml:space="preserve">
     <value>请输入密码</value>
   </data>
+  <data name="V_Login_Title" xml:space="preserve">
+    <value>xxxx管理平台</value>
+  </data>
   <data name="V_Login_User_Placeholder" xml:space="preserve">
     <value>请输入用户名</value>
   </data>
-  <data name="V_System_Name" xml:space="preserve">
-    <value>派迅智能集控管理平台</value>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎来到xxxx！</value>
   </data>
 </root>
