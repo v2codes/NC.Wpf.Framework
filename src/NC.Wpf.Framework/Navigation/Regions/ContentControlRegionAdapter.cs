@@ -5,7 +5,6 @@ using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Properties;
 
 
-
 #if HAS_WINUI
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

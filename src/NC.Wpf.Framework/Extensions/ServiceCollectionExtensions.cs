@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
+﻿using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,7 +7,6 @@ using NC.Wpf.Core.Ioc;
 using NC.Wpf.Framework.Navigation.Regions;
 using NC.Wpf.Framework.Navigation.Regions.Behaviors;
 using NC.Wpf.Core.Mvvm;
-using System.Windows;
 
 namespace NC.Wpf.Framework.Extensions
 {

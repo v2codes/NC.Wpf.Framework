@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="NC.Wpf.ControlModule.Views.ControlSample" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:framework="clr-namespace:NC.Wpf.Framework.Mvvm;assembly=NC.Wpf.Framework"
+             xmlns:local="clr-namespace:NC.Wpf.ControlModule.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:NC.Wpf.ControlModule.Models" d:DesignHeight="450" d:DesignWidth="800"
+             framework:ViewModelLocator.AutoWireViewModel="True" mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock FontSize="24" Text="我是Control示例模块" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Margin="10,0" FontSize="24" Text=" Button" />
+            <!--<ProgressBar Height="2" Margin="0,10" IsIndeterminate="False" />-->
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Normal" Style="{StaticResource NormalButton}" />
+                <Button Margin="10,0" Content="Primary" Style="{StaticResource PrimaryButton}" />
+                <Button Margin="10,0" Content="Warning" Style="{StaticResource WarningButton}" />
+                <Button Content="Danger" Style="{StaticResource DangerButton}" />
+                <Button Margin="10,0" Content="Disbled" IsEnabled="False" Style="{StaticResource NormalButton}" />
+                <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            </StackPanel>
+
+            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Input" />
+            <!--<ProgressBar Height="2" Margin="0,10" IsIndeterminate="False" />-->
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Margin="0,0,0,0" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <materialDesign:PackIcon Margin="5,0" VerticalAlignment="Center" Kind="AccountOutline" />
+                <TextBox Width="180" materialDesign:HintAssist.HelperText="Enter help text……" materialDesign:HintAssist.Hint="placeholder" />
+                <TextBox Width="180" Margin="40,0" materialDesign:HintAssist.Hint="disabled" IsEnabled="False" />
+                <TextBox Width="180" materialDesign:HintAssist.Hint="Enter your name">
+                    <TextBox.Text>
+                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <models:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Margin="20,30,0,0" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <!--  materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding ElementName=DisplaySelectedItemCheckBox, Path=IsChecked}"  -->
+                <ComboBox Width="180" materialDesign:HintAssist.Hint="please select">
+                    <ComboBoxItem Content="Apple" />
+                    <ComboBoxItem Content="Banana" />
+                    <ComboBoxItem Content="Pear" />
+                    <ComboBoxItem Content="Orange" />
+                </ComboBox>
+
+                <ComboBox Width="180" Margin="40,0" materialDesign:HintAssist.Hint="AutoComplete" materialDesign:HintAssist.HintOpacity=".26"
+                          IsEditable="True">
+                    <ComboBoxItem Content="Apple" />
+                    <ComboBoxItem Content="Banana" />
+                    <ComboBoxItem Content="Pear" />
+                    <ComboBoxItem Content="Orange" />
+                </ComboBox>
+
+                <ComboBox Width="180" materialDesign:HintAssist.Hint="please select" materialDesign:HintAssist.IsFloating="False" IsEnabled="False">
+                    <ComboBoxItem Content="Apple" IsSelected="True" />
+                </ComboBox>
+            </StackPanel>
+
+            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Radio &amp; Checkbox" />
+            <!--<ProgressBar Height="2" Margin="0,10" IsIndeterminate="False" />-->
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Checked" IsChecked="True" />
+                <CheckBox Margin="20,0" Content="Unchecked" IsChecked="False" />
+                <CheckBox Content="Indeterminate" IsChecked="{x:Null}" />
+                <CheckBox Margin="20,0" Content="Disabled" IsChecked="True" IsEnabled="False" />
+                <CheckBox Content="Disabled" IsChecked="False" IsEnabled="False" />
+                <CheckBox materialDesign:RippleAssist.IsDisabled="True" Content="Ripple disabled" IsChecked="True" />
+                <CheckBox Margin="20,0" materialDesign:CheckBoxAssist.CheckBoxSize="30" Content="Custom Size" IsChecked="True" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Radio">
+                    <RadioButton.IsChecked>
+                        <Binding Path="Name" RelativeSource="{RelativeSource Self}">
+                            <Binding.ValidationRules>
+                                <models:IsCheckedValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+                <RadioButton Margin="20,0" Content="Checked" IsChecked="True" />
+                <RadioButton Content="Disabled" IsChecked="True" IsEnabled="False" />
+                <RadioButton Content="Disabled" IsEnabled="False" />
+            </StackPanel>
+
+            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Search &amp; Table" />
+            <!--<ProgressBar Height="2" Margin="0,10" IsIndeterminate="False" />-->
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Orientation="Horizontal">
+                <!--  Padding="25,8,0,8"  -->
+                <TextBox Width="250" Height="36" Padding="10,0" VerticalContentAlignment="Center"
+                         materialDesign:HintAssist.Hint="Search by key words" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                         materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.TextFieldCornerRadius="18"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                <!--<materialDesign:PackIcon Width="20" Height="20" Margin="-195,8" Kind="Magnify" />-->
+            </StackPanel>
+
+            <DataGrid AutoGenerateColumns="False"
+                      Background="{StaticResource SecondaryLightBrush}"
+                      BorderBrush="{StaticResource SecondaryDarkBrush}"
+                      CanUserAddRows="False" HeadersVisibility="All"
+                      ItemsSource="{Binding MenuList}">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Height" Value="36" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                    <Border Padding="10,0" Background="{StaticResource SecondaryBrush}" BorderBrush="{StaticResource SecondaryDarkBrush}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <!--<Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="BorderBrush" Value="{StaticResource SecondaryDarkBrush}" />
+                    </Style>-->
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Icon">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <materialDesign:PackIcon VerticalAlignment="Center" Kind="{Binding Icon}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Url}" Header="View" />
+                    <DataGridTemplateColumn Header="Default Home">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel HorizontalAlignment="Center">
+                                    <RadioButton IsChecked="{Binding IsDefault}" Style="{StaticResource MaterialDesignRadioButton}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Divider &amp; ProgressBar" />
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Margin="0,0,0,200" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="5" Height="100" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+                    <ProgressBar Width="100" Height="5" Margin="50,10" IsIndeterminate="True"
+                                 Orientation="Vertical" />
+                </StackPanel>
+                <Rectangle Width="200" Height="5" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+                <ProgressBar Width="200" Height="5" Margin="50,10" IsIndeterminate="True" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -17,12 +17,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Left">
-            <Button Width="100" Height="36" materialDesign:ButtonAssist.CornerRadius="18"
+            <Button Command="{Binding SendMessageToMainViewCommand}" Style="{StaticResource PrimaryButton}">
+                <TextBlock Text="发送消息" />
+            </Button>
+            <!--<Button Width="100" Height="36" materialDesign:ButtonAssist.CornerRadius="18"
                     Command="{Binding SendMessageToMainViewCommand}"
                     Foreground="White"
                     Style="{StaticResource MaterialDesignRaisedButton}">
                 <TextBlock Text="发送消息" />
-            </Button>
+            </Button>-->
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,15 +1,7 @@
 ﻿using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Volo.Abp.DependencyInjection;
 
@@ -23,6 +15,10 @@ namespace NC.Wpf.App.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            // 注册Region
+            // 1. xaml中注册
+            // 2. 后台代码注册：RegionManager.SetRegionName(Content, "ContentRegion");
 
             // 绑定标题栏按钮事件
             BindingButtonEvents();
@@ -82,7 +78,7 @@ namespace NC.Wpf.App.Views
             timer.Tick += (s, e) =>
             {
                 var dtNow = DateTime.Now;
-                tbTime.Text = $"{dtNow.ToString("dddd")}  {dtNow.ToString("yyyy-MM-dd HH:mm:ss")}";
+                tbTime.Text = $"{dtNow.ToString("dddd  yyyy-MM-dd HH:mm:ss")}";
             };
             timer.Start();
         }

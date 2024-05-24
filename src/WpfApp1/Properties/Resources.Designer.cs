@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NC.Wpf.Localization.Properties {
+namespace WpfApp1.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NC.Wpf.Localization.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NC.Wpf.Localization.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfApp1.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,38 @@ namespace NC.Wpf.Localization.Properties {
         }
         
         /// <summary>
-        ///   查找类似 苏州派迅智能科技有限公司 的本地化字符串。
+        ///   查找类似 切换语言 的本地化字符串。
         /// </summary>
-        public static string CompanyName {
+        public static string Button {
             get {
-                return ResourceManager.GetString("CompanyName", resourceCulture);
+                return ResourceManager.GetString("Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 ©2024 苏州派迅智能科技有限公司 版权所有 苏ICP备15055472号-1 的本地化字符串。
+        ///   查找类似 首页 的本地化字符串。
         /// </summary>
-        public static string Copyright {
+        public static string Home {
             get {
-                return ResourceManager.GetString("Copyright", resourceCulture);
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 ©2024 苏州派迅智能科技有限公司 的本地化字符串。
+        ///   查找类似 设置 的本地化字符串。
         /// </summary>
-        public static string Copyright_Simple {
+        public static string Setting {
             get {
-                return ResourceManager.GetString("Copyright_Simple", resourceCulture);
+                return ResourceManager.GetString("Setting", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 关闭客户端 的本地化字符串。
+        ///   查找类似 标题 的本地化字符串。
         /// </summary>
-        public static string V_Exit_Tooltip {
+        public static string Title {
             get {
-                return ResourceManager.GetString("V_Exit_Tooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 登录 的本地化字符串。
-        /// </summary>
-        public static string V_Login_Btn_Login {
-            get {
-                return ResourceManager.GetString("V_Login_Btn_Login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 请输入密码 的本地化字符串。
-        /// </summary>
-        public static string V_Login_Pwd_Placeholder {
-            get {
-                return ResourceManager.GetString("V_Login_Pwd_Placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 请输入用户名 的本地化字符串。
-        /// </summary>
-        public static string V_Login_User_Placeholder {
-            get {
-                return ResourceManager.GetString("V_Login_User_Placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 派迅智能集控管理平台 的本地化字符串。
-        /// </summary>
-        public static string V_System_Name {
-            get {
-                return ResourceManager.GetString("V_System_Name", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

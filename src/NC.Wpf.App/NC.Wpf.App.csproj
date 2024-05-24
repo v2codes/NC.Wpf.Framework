@@ -7,6 +7,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 		<StartupObject>NC.Wpf.App.Program</StartupObject>
+		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,21 +36,26 @@
 		<Content Include="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
+		<Resource Include="assets\login_bg2.png" />
 	</ItemGroup>
 		
 	<ItemGroup>
 		<ProjectReference Include="..\NC.AService\NC.AService.csproj" />
+		<ProjectReference Include="..\NC.Wpf.HomeModule\NC.Wpf.HomeModule.csproj" />
 		<ProjectReference Include="..\NC.Wpf.AModule\NC.Wpf.AModule.csproj" />
 		<ProjectReference Include="..\NC.Wpf.Application\NC.Wpf.Application.csproj" />
+		<ProjectReference Include="..\NC.Wpf.ControlModule\NC.Wpf.ControlModule.csproj" />
 		<ProjectReference Include="..\NC.Wpf.EntityFrameworkCore\NC.Wpf.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\NC.Wpf.Framework\NC.Wpf.Framework.csproj" />
-		<ProjectReference Include="..\NC.Wpf.HomeModule\NC.Wpf.HomeModule.csproj" />
 		<ProjectReference Include="..\NC.Wpf.Localization\NC.Wpf.Localization.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Resource Include="assets\favicon.ico" />
 		<Resource Include="assets\login_bg.png" />
+		<Resource Include="assets\login_bg3.png" />
+		<Resource Include="assets\logo.png" />
+		<Resource Include="assets\logo_1.png" />
 	</ItemGroup>
 
 	<ItemGroup>

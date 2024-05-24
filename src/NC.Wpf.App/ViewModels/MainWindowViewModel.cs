@@ -106,9 +106,9 @@ namespace NC.Wpf.App.ViewModels
                 new MenuInfo {Name="用户管理",Url="AView",Icon="AccountSupervisorOutline", IsDefault=false},
                 new MenuInfo {Name="设备管理",Url="HomeView",Icon="Lan", IsDefault=false},
                 new MenuInfo {Name="报警中心",Url="AView",Icon="AlarmLightOutline", IsDefault=false},
-                new MenuInfo {Name="日志中心",Url="AView",Icon="TuneVerticalVariant", IsDefault=false},
-                new MenuInfo {Name="权限管理",Url="HomeView",Icon="FormatListBulleted", IsDefault=false},
-                new MenuInfo {Name="系统配置",Url="HomeView",Icon="CogOutline", IsDefault=false},
+                new MenuInfo {Name="日志中心",Url="HomeView",Icon="FormatListBulleted", IsDefault=false},
+                new MenuInfo {Name="控制中心",Url="AView",Icon="TuneVerticalVariant", IsDefault=false},
+                new MenuInfo {Name="系统配置",Url="ControlSample",Icon="CogOutline", IsDefault=false},
             };
             return menus;
         }

@@ -6,12 +6,17 @@ using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 using NC.Wpf.Framework;
-using NC.Wpf.HomeModule;
 using NC.Wpf.AModule;
+using NC.Wpf.ControlModule;
+using NC.Wpf.HomeModule;
 using NC.AService;
 using NC.Wpf.Application;
 using NC.Wpf.EntityFrameworkCore;
 using NC.Wpf.Application.Contracts;
+using Volo.Abp;
+using NC.Wpf.Core.Navigation.Regions;
+using NC.Wpf.Framework.Navigation.Regions;
+using System;
 
 namespace NC.Wpf.App
 {
@@ -19,6 +24,7 @@ namespace NC.Wpf.App
                typeof(NCWpfFrameworkModule),
                typeof(NCWpfHomeModule),
                typeof(NCWpfAModule),
+               typeof(NCWpfControlModule),
                typeof(NCAServiceModule),
                typeof(NCWpfEntityFrameworkCoreModule),
                typeof(AbpEntityFrameworkCoreSqlServerModule),
@@ -40,6 +46,19 @@ namespace NC.Wpf.App
             //{
             //    options.IsEnabled = false;
             //});
+        }
+
+        public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
+        {
+            //var app = context.ServiceProvider.GetService<System.Windows.Application>();
+            //System.Windows.Application.LoadComponent(app, new Uri("App.xaml", UriKind.Relative));
+
+            //var shell = context.ServiceProvider.GetService<Views.MainWindow>();
+            //if (shell != null)
+            //{
+            //    RegionManager.SetRegionManager(shell, context.ServiceProvider.GetService<IRegionManager>());
+            //    RegionManager.UpdateRegions();
+            //}
         }
     }
 

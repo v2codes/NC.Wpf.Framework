@@ -16,13 +16,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Left">
-            <Button Width="100" Height="36" materialDesign:ButtonAssist.CornerRadius="18"
-                    Command="{Binding SendMessageToMainViewCommand}"
-                    Foreground="White"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignRaisedButton}">
+            <Button Command="{Binding SendMessageToMainViewCommand}" Style="{StaticResource PrimaryButton}">
                 <TextBlock Text="发送消息" />
             </Button>
+            <!--<Button Width="100" Height="36" materialDesign:ButtonAssist.CornerRadius="18"
+                    Command="{Binding SendMessageToMainViewCommand}"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                <TextBlock Text="发送消息" />
+            </Button>-->
         </StackPanel>
     </Grid>
 </UserControl>

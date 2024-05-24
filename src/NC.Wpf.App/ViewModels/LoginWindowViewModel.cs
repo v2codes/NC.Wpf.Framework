@@ -31,34 +31,31 @@ namespace NC.Wpf.App.ViewModels
         private string _loginMessage;
 
         [ObservableProperty]
-        private string _currentCulture;
+        private bool _loginLoading;
 
         public LoginWindowViewModel(MainWindow mainWindow, ISampleAppService sampleAppService)
         {
             _mainWindow = mainWindow;
             _sampleAppService = sampleAppService;
-            CurrentCulture = "zh-CN";
+            UserName = "admin";
+            Password = "admin";
+            LoginLoading = false;
         }
 
         [RelayCommand]
-        public void Login(Window loginWindow)
+        public async Task Login(Window loginWindow)
         {
-            var result = _sampleAppService.GetAsync().Result;
-
+            if (LoginLoading)
+            {
+                return;
+            }
+            LoginLoading = true;
+            //var result = await _sampleAppService.GetAsync();
             if (Validate())
             {
                 loginWindow.Close();
                 _mainWindow.Show();
             }
-        }
-
-        [RelayCommand]
-        public void LanguageChanged(Window loginWindow)
-        {
-            //NC.Wpf.Localization.Resources.ResourceExtension.Instance
-            //Resources.ResourceExtension.Instance.CurrentCulture = CurrentCulture;
-            //CultureInfo.CurrentCulture = new CultureInfo(CurrentCulture);
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo(CurrentCulture);
         }
 
         private bool Validate()

@@ -14,7 +14,7 @@ namespace NC.Wpf.Domain.Shared
         /// <summary>
         /// 普通消息
         /// </summary>
-        Infomation = 0,
+        Information = 0,
 
         /// <summary>
         /// 警告

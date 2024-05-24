@@ -5,6 +5,9 @@ using NC.Wpf.App.Views;
 using NC.Wpf.Core.Ioc;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Navigation.Regions;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
+using System.Globalization;
 
 namespace NC.Wpf.App
 {

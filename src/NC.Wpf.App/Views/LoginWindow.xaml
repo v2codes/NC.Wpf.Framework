@@ -4,12 +4,12 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:lang="clr-namespace:NC.Wpf.Localization.Properties;assembly=NC.Wpf.Localization"
         xmlns:local="clr-namespace:NC.Wpf.App.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="thisLoginWindow" Title="XXXX"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="thisLoginWindow" Title="Passion"
         Width="1280" Height="768" framework:ViewModelLocator.AutoWireViewModel="True" AllowsTransparency="True"
-        Background="{StaticResource PrimaryLinearColor}"
+        Background="{StaticResource PrimaryBrush}"
         FontFamily="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"
         FontSize="13"
-        Foreground="{StaticResource LightBlack}"
+        Foreground="{StaticResource GrayDarkBrush}"
         Icon="/assets/favicon.ico" ResizeMode="NoResize"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen" WindowStyle="None" mc:Ignorable="d">
@@ -20,9 +20,9 @@
         </Grid.Background>
 
         <Grid>
-            <!--<Grid.Background>
+            <Grid.Background>
                 <ImageBrush AlignmentX="Right" AlignmentY="Center" ImageSource="/assets/login_bg3.png" Opacity="0.5" />
-            </Grid.Background>-->
+            </Grid.Background>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -38,19 +38,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
-                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" Margin="0,0,0,10" Orientation="Horizontal">
-                        <TextBlock FontSize="24" FontWeight="Bold" Foreground="White" Text="XXXX" />
-                        <!--<Image Height="50" Source="/assets/logo.png" />-->
-                        <!--<Image Height="50" Source="/assets/logo_1.png" />-->
+                        <Image Height="50" Source="/assets/logo.png" />
                     </StackPanel>
-
-                    <!--<StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="Button_Click" Content="切换语言" />
-                        <TextBlock Height="18" Foreground="White" Text="{x:Static lang:Resources.Welcome}" />
-                    </StackPanel>-->
 
                     <StackPanel Grid.Column="2" HorizontalAlignment="Right">
                         <Button x:Name="btnClose" Width="30" Height="30" Margin="0"
@@ -75,7 +67,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
-                        <TextBlock FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkGreen}" Text="{x:Static lang:Resources.V_Login_Title}" />
+                        <TextBlock FontSize="20" FontWeight="Bold" Foreground="{StaticResource PrimaryDarkBrush}" Text="{x:Static lang:Resources.V_System_Name}" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Margin="0,20,0,0" VerticalAlignment="Bottom" Orientation="Horizontal">
@@ -85,13 +77,11 @@
 
                     <StackPanel Grid.Row="2" Margin="0,20" VerticalAlignment="Bottom" Orientation="Horizontal">
                         <materialDesign:PackIcon Margin="5,0" VerticalAlignment="Center" Kind="LockOutline" />
-
                         <PasswordBox Width="220" framework:PasswordHelper.BindingPassword="{Binding Password, Mode=TwoWay}" materialDesign:HintAssist.HelperText="admin" materialDesign:HintAssist.Hint="{x:Static lang:Resources.V_Login_Pwd_Placeholder}">
                             <PasswordBox.InputBindings>
                                 <KeyBinding Key="Enter" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=thisLoginWindow}" />
                             </PasswordBox.InputBindings>
                         </PasswordBox>
-
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
@@ -99,10 +89,13 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="4" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                        <Button Width="230"
+                        <Button Width="230" materialDesign:ButtonProgressAssist.IndicatorForeground="White"
+                                materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding LoginLoading}"
+                                materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.Value="-1"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=thisLoginWindow}"
-                                Content="登 录" Foreground="White" />
+                                Content="登 录" Foreground="White"
+                                Style="{StaticResource MaterialDesignRaisedButton}" />
                     </StackPanel>
                 </Grid>
             </Border>

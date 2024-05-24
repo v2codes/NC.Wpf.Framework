@@ -11,13 +11,14 @@ using Serilog.Events;
 using Volo.Abp;
 using NC.Wpf.App.Views;
 using NC.Wpf.Framework.Extensions;
+using System.Globalization;
+using Microsoft.Extensions.Logging;
 
 namespace NC.Wpf.App
 {
     static class Program
     {
         private static IHost? _host;
-        private static IAbpApplicationWithExternalServiceProvider? _abpApplication;
 
         async static Task<int> Main(string[] args)
         {
@@ -46,30 +47,23 @@ namespace NC.Wpf.App
                 Log.Information("Starting WPF host.");
                 var builder = Host.CreateApplicationBuilder(args);
 
-                //builder.Configuration.AddAppSettingsSecretsJson();
-                //builder.Logging.ClearProviders().AddSerilog();
-                //builder.ConfigureContainer(builder.Services.AddAutofacServiceProviderFactory());
-                //builder.Services.AddHostedService<NCWpfAppHostedServcie<App, MainWindow>>();
+                // console template
+                builder.Configuration.AddAppSettingsSecretsJson();
+                builder.Logging.ClearProviders().AddSerilog();
+                builder.ConfigureContainer(builder.Services.AddAutofacServiceProviderFactory());
+                builder.Services.AddHostedService<NCWpfAppHostedServcie<App, LoginWindow>>();
+                builder.Services.AddRegion().AddMvvm();
+                await builder.Services.AddApplicationAsync<NCWpfAppModule>();
 
-                _abpApplication = await builder.Services.AddApplicationAsync<NCWpfAppModule>(options =>
-                {
-                    options.UseAutofac();
-                    options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
-                    //options.Services.AddHostedService<NCWpfAppHostedServcie<App, MainWindow>>();
-                    options.Services.AddHostedService<NCWpfAppHostedServcie<App, LoginWindow>>();
-                    options.Services.AddRegion()
-                                    .AddMvvm();
-                });
+                // 设置默认语言
+                var culture = builder.Configuration["Culture"] ?? "zh-CN";
+                var cultureInfo = new CultureInfo(culture);
+                Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
 
-                //var hashCode = _abpApplication.ServiceProvider?.GetHashCode();
-
-                _host = builder.Build()
-                               .UseRegion();
-
+                _host = builder.Build().UseRegion();
                 await _host.InitializeAsync();
-
                 await _host.RunAsync();
-                //host.Run();
 
                 return 0;
 

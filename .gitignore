@@ -261,4 +261,8 @@ deploy/ssh-password.txt
 deploy/github-api-key.txt
 deploy/_run_all_log.txt
 
-
+# assets
+src/NC.Wpf.App/assets/logo.png
+src/NC.Wpf.App/assets/logo_1.png
+src/NC.Wpf.Localization/Resources/
+src/NC.Wpf.Localization/Properties/

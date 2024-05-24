@@ -3,27 +3,78 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Name="Application">
     <Application.Resources>
         <ResourceDictionary>
-            <!--<Color x:Key="PrimaryColor">#03C46B</Color>
-            <Color x:Key="PrimaryLinearColor">#03DD78</Color>
-            <Color x:Key="SecondaryColor">#F5F5F5</Color>-->
 
-            <SolidColorBrush x:Key="DarkGreen" Color="#15AA65" />
-            <SolidColorBrush x:Key="PrimaryLinearColor" Color="#03C46B" />
-            <SolidColorBrush x:Key="PrimaryColor" Color="#03C46B" />
-            <SolidColorBrush x:Key="SecondaryColor" Color="#F5F5F5" />
+            <!--  主题色  -->
+            <Color x:Key="PrimaryDarkColor">#15AA65</Color>
+            <Color x:Key="PrimaryColor">#03C46B</Color>
+            <Color x:Key="PrimaryLightColor">#03DD78</Color>
 
-            <SolidColorBrush x:Key="Gray" Color="#E5E5E5" />
-            <SolidColorBrush x:Key="LightGray" Color="#FCFCFC" />
-            <SolidColorBrush x:Key="DarkGray" Color="#888888" />
-            <SolidColorBrush x:Key="LightBlack" Color="#333333" />
-            <SolidColorBrush x:Key="Black" Color="#000000" />
+            <Color x:Key="SecondaryDarkColor">#E5E5E5</Color>
+            <Color x:Key="SecondaryColor">#F5F5F5</Color>
+            <Color x:Key="SecondaryLightColor">#FCFCFC</Color>
 
+            <Color x:Key="WarningColor">#FF9900</Color>
+            <Color x:Key="DangerColor">#F5222D</Color>
 
+            <!--  字体色  -->
+            <Color x:Key="GrayColor">#888888</Color>
+            <Color x:Key="GrayDarkColor">#333333</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+
+            <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+            <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLightColor}" />
+            <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
+            <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDarkColor}" />
+            <SolidColorBrush x:Key="SecondaryDarkBrush" Color="{StaticResource SecondaryDarkColor}" />
+            <SolidColorBrush x:Key="SecondaryLightBrush" Color="{StaticResource SecondaryLightColor}" />
+
+            <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}" />
+            <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource DangerColor}" />
+
+            <SolidColorBrush x:Key="GrayBrush" Color="{StaticResource GrayColor}" />
+            <SolidColorBrush x:Key="GrayDarkBrush" Color="{StaticResource GrayDarkColor}" />
+            <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource BlackColor}" />
+
+            <!--
+                覆盖默认的主色调和前景色
+                : https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Brush-Names
+                : https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Custom-Palette-Hues
+
+                PrimaryColor：主色调，用于按钮、标题等元素的背景色。
+                SecondaryColor：辅助色调，用于强调、交互元素等。
+                PrimaryLight：主色调的亮色版本。
+                PrimaryDark：主色调的暗色版本。
+                SecondaryLight：辅助色调的亮色版本。
+                SecondaryDark：辅助色调的暗色版本。
+                PrimaryForeground：主色调的前景色，用于文本、图标等元素。
+                SecondaryForeground：辅助色调的前景色。
+                Background：背景色。
+                CardBackground：卡片背景色，用于卡片元素。
+                Border：边框颜色。
+                ValidationError：验证错误时使用的颜色。
+
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Primary.Light" Color="{StaticResource PrimaryLightColor}"/>
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Primary.Light.Foreground" Color="{StaticResource Primary200Foreground}"/>
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Primary" Color="{StaticResource PrimaryColor}"/>
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Primary.Foreground" Color="{StaticResource Primary500Foreground}"/>
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Primary.Dark" Color="{StaticResource Primary700}"/>
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Primary.Dark.Foreground" Color="{StaticResource Primary700Foreground}"/>
+
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary.Light" Color="{StaticResource Secondary200}" />
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary.Light.Foreground" Color="{StaticResource Secondary200Foreground}" />
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary" Color="{StaticResource Secondary400}" />
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary.Foreground" Color="{StaticResource Secondary400Foreground}" />
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary.Dark" Color="{StaticResource Secondary700}" />
+            <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary.Dark.Foreground" Color="{StaticResource Secondary700Foreground}" />
+            -->
+
+            <!--  标题栏渐变色  -->
             <LinearGradientBrush x:Key="CustomColorZoneStyle" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0" Color="#FF03C46B" />
-                <GradientStop Offset="1" Color="#FF03DD78" />
+                <GradientStop Offset="0" Color="{StaticResource PrimaryColor}" />
+                <GradientStop Offset="1" Color="{StaticResource PrimaryLightColor}" />
             </LinearGradientBrush>
 
+            <!--  引入 MaterialDesign3 样式库  -->
             <ResourceDictionary.MergedDictionaries>
                 <!--  This is the current way to setup your app's initial theme  -->
                 <!--<materialDesign:BundledTheme BaseTheme="Inherit" ColorAdjustment="{materialDesign:ColorAdjustment}" PrimaryColor="DeepPurple" SecondaryColor="Lime" />-->
@@ -39,7 +90,43 @@
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
                 <!--<ResourceDictionary Source="pack://application:,,,/ShowMeTheXAML.AvalonEdit;component/Themes/xamldisplayer.xaml" />-->
+
+                <ResourceDictionary>
+
+                    <!--  按钮样式  -->
+                    <Style x:Key="PrimaryButton" BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="36" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="18" />
+                    </Style>
+                    <Style x:Key="NormalButton" BasedOn="{StaticResource PrimaryButton}" TargetType="Button">
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="Foreground" Value="{DynamicResource GrayDarkBrush}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryDarkBrush}" />
+                    </Style>
+                    <Style x:Key="WarningButton" BasedOn="{StaticResource PrimaryButton}" TargetType="Button">
+                        <Setter Property="Background" Value="{DynamicResource WarningBrush}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource WarningBrush}" />
+                    </Style>
+                    <Style x:Key="DangerButton" BasedOn="{StaticResource PrimaryButton}" TargetType="Button">
+                        <Setter Property="Background" Value="{DynamicResource DangerBrush}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                    </Style>
+
+                    <!--  滚动条样式  -->
+                    <Style x:Key="ScrollViewer" TargetType="ScrollViewer">
+                        <Style.Resources>
+                            <Style BasedOn="{StaticResource MaterialDesignScrollViewer}" TargetType="ScrollViewer" />
+                            <Style BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" TargetType="ScrollBar">
+                                <Setter Property="materialDesign:ScrollBarAssist.ThumbCornerRadius" Value="5" />
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
