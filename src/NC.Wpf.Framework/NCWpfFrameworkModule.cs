@@ -20,13 +20,13 @@ namespace NC.Wpf.Framework
     [DependsOn(typeof(NCWpfCoreModule))]
     public class NCWpfFrameworkModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-        }
+        //public override void ConfigureServices(ServiceConfigurationContext context)
+        //{
+        //}
 
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
-        {
+        //public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        //{
 
-        }
+        //}
     }
 }

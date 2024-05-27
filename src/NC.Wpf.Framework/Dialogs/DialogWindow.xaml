@@ -1,7 +1,7 @@
 ﻿<Window x:Class="NC.Wpf.Framework.Dialogs.DialogWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="{Binding Title}"
-        WindowStartupLocation="CenterOwner">
+        AllowsTransparency="True" WindowStartupLocation="CenterOwner" WindowStyle="None">
     <Window.Style>
         <Style TargetType="{x:Type Window}">
             <Setter Property="SizeToContent" Value="WidthAndHeight" />

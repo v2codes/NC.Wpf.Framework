@@ -8,17 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="Localization\AppSettingManagerSourceBuilder.cs" />
-		<Compile Remove="Localization\AppSettingManagerSourceGenerator.cs" />
-		<Compile Remove="Localization\ResourceExtensionSourceBuilder.cs" />
-		<Compile Remove="Localization\ResourceExtensionSourceGenerator.cs" />
-		<Compile Remove="Mvvm\ViewModelLocationProvider.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<!--<PackageReference Include="Microsoft.CodeAnalysis" Version="4.9.2" />
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" />-->
 	</ItemGroup>
 
 	<ItemGroup>

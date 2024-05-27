@@ -17,6 +17,10 @@ using Volo.Abp;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Navigation.Regions;
 using System;
+using NC.Wpf.Framework.Extensions;
+using Microsoft.Extensions.Options;
+using System.Globalization;
+using NC.Wpf.App.Views;
 
 namespace NC.Wpf.App
 {
@@ -46,6 +50,23 @@ namespace NC.Wpf.App
             //{
             //    options.IsEnabled = false;
             //});
+        }
+
+        public override void PostConfigureServices(ServiceConfigurationContext context)
+        {
+
+            context.Services.GetServiceProviderOrNull();
+        }
+
+        // App.xaml.cs 启动入口时，需在此处配置 Region 相关
+        public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
+        {
+            var serviceScope = context.ServiceProvider.CreateScope();
+            serviceScope.ServiceProvider.UseRegion<MainWindow>();
+
+            //var mainWindow = serviceScope.ServiceProvider.GetRequiredService<MainWindow>();
+            //RegionManager.SetRegionManager(mainWindow, serviceScope.ServiceProvider.GetRequiredService<IRegionManager>());
+            //RegionManager.UpdateRegions();
         }
 
         public override void OnPostApplicationInitialization(ApplicationInitializationContext context)

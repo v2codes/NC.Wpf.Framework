@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:NC.Wpf.ControlModule.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:NC.Wpf.ControlModule.Models" d:DesignHeight="450" d:DesignWidth="800"
-             framework:ViewModelLocator.AutoWireViewModel="True" mc:Ignorable="d">
+             xmlns:models="clr-namespace:NC.Wpf.ControlModule.Models" framework:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -96,6 +96,26 @@
                 <RadioButton Content="Disabled" IsEnabled="False" />
             </StackPanel>
 
+            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Dialogs" />
+            <!--<ProgressBar Height="2" Margin="0,10" IsIndeterminate="False" />-->
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding ShowMessageDialogCommand}" Content="消息提示" Style="{StaticResource PrimaryButton}" />
+                <Button Margin="20,0" Command="{Binding ShowConfirmDialogCommand}" Content="确认消息" Style="{StaticResource PrimaryButton}" />
+            </StackPanel>
+
+            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Divider &amp; ProgressBar" />
+            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="5" Height="100" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+                    <ProgressBar Width="100" Height="5" Margin="50,10" IsIndeterminate="True"
+                                 Orientation="Vertical" />
+                </StackPanel>
+                <Rectangle Width="200" Height="5" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
+                <ProgressBar Width="200" Height="5" Margin="50,10" IsIndeterminate="True" />
+            </StackPanel>
+
             <TextBlock Margin="10,40,10,0" FontSize="24" Text="Search &amp; Table" />
             <!--<ProgressBar Height="2" Margin="0,10" IsIndeterminate="False" />-->
             <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
@@ -107,8 +127,7 @@
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" />
                 <!--<materialDesign:PackIcon Width="20" Height="20" Margin="-195,8" Kind="Magnify" />-->
             </StackPanel>
-
-            <DataGrid AutoGenerateColumns="False"
+            <DataGrid Margin="0,10" AutoGenerateColumns="False"
                       Background="{StaticResource SecondaryLightBrush}"
                       BorderBrush="{StaticResource SecondaryDarkBrush}"
                       CanUserAddRows="False" HeadersVisibility="All"
@@ -152,18 +171,31 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <TextBlock Margin="10,40,10,0" FontSize="24" Text="Divider &amp; ProgressBar" />
-            <Rectangle Height="2" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
-            <StackPanel Margin="0,0,0,200" Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="5" Height="100" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
-                    <ProgressBar Width="100" Height="5" Margin="50,10" IsIndeterminate="True"
-                                 Orientation="Vertical" />
-                </StackPanel>
-                <Rectangle Width="200" Height="5" Margin="0,10" Fill="{DynamicResource MaterialDesignDivider}" />
-                <ProgressBar Width="200" Height="5" Margin="50,10" IsIndeterminate="True" />
+            <StackPanel Margin="0,0,0,100" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Width="36" Padding="0"
+                        Foreground="{StaticResource GrayDarkBrush}"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="上一页">
+                    <materialDesign:PackIcon Kind="ChevronLeft" />
+                </Button>
+                <Button Width="36" Padding="0" Content="1"
+                        Foreground="{StaticResource GrayDarkBrush}"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+                <Button Width="36" Padding="0" Content="2"
+                        Foreground="{StaticResource GrayDarkBrush}"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+                <Button Width="36" Padding="0" Content="3" Style="{StaticResource MaterialDesignFlatButton}" />
+                <Button Width="36" Padding="0" Content="4"
+                        Foreground="{StaticResource GrayDarkBrush}"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+                <Button Width="36" Padding="0"
+                        Foreground="{StaticResource GrayDarkBrush}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="下一页">
+                    <materialDesign:PackIcon Kind="ChevronRight" />
+                </Button>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </UserControl>

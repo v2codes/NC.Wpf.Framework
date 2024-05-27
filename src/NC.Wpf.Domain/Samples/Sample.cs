@@ -21,5 +21,10 @@ namespace NC.Wpf.Domain
         [Column(TypeName = "nvarchar(20)")]
         public EnumSampleType? Type { get;set; }
 
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public int? Sequence { get; set; }
+
     }
 }

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
-using NC.Wpf.Framework.Mvvm;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
+using Volo.Abp.DependencyInjection;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using NC.Wpf.Core.Dialogs;
+using NC.Wpf.Framework.Mvvm;
+using System.Windows;
 
 namespace NC.Wpf.ControlModule.ViewModels
 {
@@ -24,9 +27,39 @@ namespace NC.Wpf.ControlModule.ViewModels
         [ObservableProperty]
         private ObservableCollection<MenuInfo> _menuList;
 
-        public ControlSampleViewModel()
+        /// <summary>
+        /// Dialog 服务
+        /// </summary>
+        private readonly IDialogService _dialogService;
+
+        public ControlSampleViewModel(IDialogService dialogService)
         {
             MenuList = GetMenuList();
+            _dialogService = dialogService;
+        }
+
+        [RelayCommand]
+        public void ShowMessageDialog()
+        {
+            var parameters = new DialogParameters() {
+                {"message", "Hello, dialog message!"}
+            };
+            _dialogService.ShowDialog("MessageDialog", parameters, result =>
+            {
+                //MessageBox.Show(result.Parameters.GetValue<string>("message"));
+            });
+        }
+
+        [RelayCommand]
+        public void ShowConfirmDialog()
+        {
+            var parameters = new DialogParameters() {
+                {"message", "Hello, confirm message?"}
+            };
+            _dialogService.ShowDialog("ConfirmDialog", parameters, result =>
+            {
+                MessageBox.Show(result.Parameters.GetValue<string>("message"));
+            });
         }
 
         private ObservableCollection<MenuInfo> GetMenuList()

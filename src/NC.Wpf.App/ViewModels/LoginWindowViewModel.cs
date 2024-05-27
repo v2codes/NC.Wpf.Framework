@@ -50,7 +50,9 @@ namespace NC.Wpf.App.ViewModels
                 return;
             }
             LoginLoading = true;
+            
             //var result = await _sampleAppService.GetAsync();
+            
             if (Validate())
             {
                 loginWindow.Close();

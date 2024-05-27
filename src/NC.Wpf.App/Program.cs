@@ -47,12 +47,12 @@ namespace NC.Wpf.App
                 Log.Information("Starting WPF host.");
                 var builder = Host.CreateApplicationBuilder(args);
 
-                // console template
+                // abp console template
                 builder.Configuration.AddAppSettingsSecretsJson();
                 builder.Logging.ClearProviders().AddSerilog();
                 builder.ConfigureContainer(builder.Services.AddAutofacServiceProviderFactory());
                 builder.Services.AddHostedService<NCWpfAppHostedServcie<App, LoginWindow>>();
-                builder.Services.AddRegion().AddMvvm();
+                builder.Services.AddRegion().AddDialog().AddMvvm();
                 await builder.Services.AddApplicationAsync<NCWpfAppModule>();
 
                 // 设置默认语言
@@ -66,18 +66,6 @@ namespace NC.Wpf.App
                 await _host.RunAsync();
 
                 return 0;
-
-                //Abp
-                //Log.Information("Starting WPF host.");
-                //var builder = WebApplication.CreateBuilder(args);
-                //builder.Host.AddAppSettingsSecretsJson()
-                //    .UseAutofac()
-                //    .UseSerilog();
-                //await builder.AddApplicationAsync<MyProjectNameHttpApiHostModule>();
-                //var app = builder.Build();
-                //await app.InitializeApplicationAsync();
-                //await app.RunAsync();
-                //return 0;
             }
             catch (Exception ex)
             {

@@ -30,8 +30,9 @@ namespace NC.Wpf.Application
             try
             {
                 var sample = await _sampleRepository.FirstOrDefaultAsync();
-                // var sample = AsyncHelper.RunSync(() => _sampleRepository.FirstOrDefaultAsync());
-                // var sample = await _dbContext.Samples.FirstOrDefaultAsync();
+                sample.Name = $"{sample.Name}-{DateTime.Now.ToString("HHmmss")}";
+                await _sampleRepository.UpdateAsync(sample);
+
                 var result = ObjectMapper.Map<Sample, SampleDto>(sample);
                 return result;
             }

@@ -15,6 +15,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\NC.Wpf.Framework\NC.Wpf.Framework.csproj" />
+		<ProjectReference Include="..\NC.Wpf.Localization\NC.Wpf.Localization.csproj" />
 	</ItemGroup>
 
 </Project>

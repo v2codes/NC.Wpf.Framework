@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,9 @@ namespace NC.Wpf.Core.Ioc
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static IServiceProvider Current =>
             _current ?? (_current = _lazyContainer?.Value);
+
+        private static bool IsServiceProviderDisposed(IServiceProvider sp)
+            => (bool)(sp.GetType()?.GetField("_disposed", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(sp) ?? true);
 
         /// <summary>
         /// Gets the <see cref="IContainerProvider" />

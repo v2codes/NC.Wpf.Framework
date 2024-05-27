@@ -61,7 +61,7 @@ namespace NC.Wpf.Localization.Properties {
         }
         
         /// <summary>
-        ///   查找类似 苏州派迅智能科技有限公司 的本地化字符串。
+        ///   查找类似 XXXX科技有限公司 的本地化字符串。
         /// </summary>
         public static string CompanyName {
             get {
@@ -70,7 +70,7 @@ namespace NC.Wpf.Localization.Properties {
         }
         
         /// <summary>
-        ///   查找类似 ©2024 苏州派迅智能科技有限公司 版权所有 苏ICP备15055472号-1 的本地化字符串。
+        ///   查找类似 ©2024 XXXX科技有限公司 版权所有 苏ICP备xxxxxx号-1 的本地化字符串。
         /// </summary>
         public static string Copyright {
             get {
@@ -79,11 +79,38 @@ namespace NC.Wpf.Localization.Properties {
         }
         
         /// <summary>
-        ///   查找类似 ©2024 苏州派迅智能科技有限公司 的本地化字符串。
+        ///   查找类似 ©2024 XXXX科技有限公司 的本地化字符串。
         /// </summary>
         public static string Copyright_Simple {
             get {
                 return ResourceManager.GetString("Copyright_Simple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消 的本地化字符串。
+        /// </summary>
+        public static string V_Btn_Cancel {
+            get {
+                return ResourceManager.GetString("V_Btn_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定 的本地化字符串。
+        /// </summary>
+        public static string V_Btn_Yes {
+            get {
+                return ResourceManager.GetString("V_Btn_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 关闭窗口 的本地化字符串。
+        /// </summary>
+        public static string V_Close_Dialog {
+            get {
+                return ResourceManager.GetString("V_Close_Dialog", resourceCulture);
             }
         }
         
@@ -124,7 +151,7 @@ namespace NC.Wpf.Localization.Properties {
         }
         
         /// <summary>
-        ///   查找类似 派迅智能集控管理平台 的本地化字符串。
+        ///   查找类似 XXXX管理平台 的本地化字符串。
         /// </summary>
         public static string V_System_Name {
             get {
