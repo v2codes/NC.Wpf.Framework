@@ -235,7 +235,7 @@
             </StackPanel>
             <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                 <materialDesign:PackIcon Margin="5,0" Kind="DragVertical" />
-                <TextBlock Text="这里是整机状态信息显示区域……" />
+                <TextBlock Text="暂无消息" />
             </StackPanel>
             <StackPanel Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                 <materialDesign:PackIcon Margin="5,0" Kind="DragVertical" />

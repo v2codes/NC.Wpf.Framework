@@ -36,7 +36,8 @@
             <StackPanel Margin="0,0,0,0" VerticalAlignment="Bottom" Orientation="Horizontal">
                 <materialDesign:PackIcon Margin="5,0" VerticalAlignment="Center" Kind="AccountOutline" />
                 <TextBox Width="180" materialDesign:HintAssist.HelperText="Enter help text……" materialDesign:HintAssist.Hint="placeholder" />
-                <TextBox Width="180" Margin="40,0" materialDesign:HintAssist.Hint="disabled" IsEnabled="False" />
+                <TextBox Width="180" Margin="40,0" materialDesign:HintAssist.Hint="disabled"
+                         materialDesign:TextFieldAssist.HasOutlinedTextField="True" IsEnabled="False" />
                 <TextBox Width="180" materialDesign:HintAssist.Hint="Enter your name">
                     <TextBox.Text>
                         <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
@@ -64,7 +65,8 @@
                     <ComboBoxItem Content="Orange" />
                 </ComboBox>
 
-                <ComboBox Width="180" materialDesign:HintAssist.Hint="please select" materialDesign:HintAssist.IsFloating="False" IsEnabled="False">
+                <ComboBox Width="180" materialDesign:HintAssist.Hint="please select" materialDesign:HintAssist.IsFloating="False"
+                          materialDesign:TextFieldAssist.HasOutlinedTextField="True" IsEnabled="False">
                     <ComboBoxItem Content="Apple" IsSelected="True" />
                 </ComboBox>
             </StackPanel>
