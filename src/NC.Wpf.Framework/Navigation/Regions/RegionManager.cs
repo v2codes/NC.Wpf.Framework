@@ -15,6 +15,7 @@ using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Common;
 using NC.Wpf.Framework.Navigation.Regions.Behaviors;
 using NC.Wpf.Framework.Properties;
+using CommunityToolkit.Mvvm.Messaging;
 
 
 #if HAS_WINUI
@@ -214,7 +215,10 @@ namespace NC.Wpf.Framework.Navigation.Regions
         /// target element longer than expected.</remarks>
         public static event EventHandler UpdatingRegions
         {
-            add { updatingRegionsListeners.AddListener(value); }
+            add
+            {
+                updatingRegionsListeners.AddListener(value);
+            }
             remove { updatingRegionsListeners.RemoveListener(value); }
         }
 

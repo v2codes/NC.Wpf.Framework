@@ -1,10 +1,9 @@
-﻿using Volo.Abp.Domain;
-using Volo.Abp.Modularity;
+﻿using Volo.Abp.Modularity;
 
 namespace NC.Wpf.Domain.Shared
 {
-    [DependsOn(// typeof(AbpValidationModule), 
-               typeof(AbpDddDomainSharedModule))]
+    //[DependsOn(// typeof(AbpValidationModule), 
+    //           typeof(AbpDddDomainSharedModule))]
     public class NCWpfDomainSharedModule : AbpModule
     {
         //public override void ConfigureServices(ServiceConfigurationContext context)

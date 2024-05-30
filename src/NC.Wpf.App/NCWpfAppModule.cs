@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.FileProviders;
+using Volo.Abp;
 using Volo.Abp.Autofac;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.SqlServer;
+//using Volo.Abp.EntityFrameworkCore;
+//using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 using NC.Wpf.Framework;
 using NC.Wpf.AModule;
@@ -11,16 +12,11 @@ using NC.Wpf.ControlModule;
 using NC.Wpf.HomeModule;
 using NC.AService;
 using NC.Wpf.Application;
-using NC.Wpf.EntityFrameworkCore;
 using NC.Wpf.Application.Contracts;
-using Volo.Abp;
-using NC.Wpf.Core.Navigation.Regions;
-using NC.Wpf.Framework.Navigation.Regions;
-using System;
-using NC.Wpf.Framework.Extensions;
-using Microsoft.Extensions.Options;
-using System.Globalization;
 using NC.Wpf.App.Views;
+//using NC.Wpf.EntityFrameworkCore;
+using NC.Wpf.Framework.Extensions;
+using NC.Wpf.SqlSugar;
 
 namespace NC.Wpf.App
 {
@@ -30,8 +26,9 @@ namespace NC.Wpf.App
                typeof(NCWpfAModule),
                typeof(NCWpfControlModule),
                typeof(NCAServiceModule),
-               typeof(NCWpfEntityFrameworkCoreModule),
-               typeof(AbpEntityFrameworkCoreSqlServerModule),
+               //typeof(NCWpfEntityFrameworkCoreModule),
+               //typeof(AbpEntityFrameworkCoreSqlServerModule),
+               typeof(NCWpfSqlSugarModule),
                typeof(NCWpfApplicationContractsModule),
                typeof(NCWpfApplicationModule))]
     public class NCWpfAppModule : AbpModule
@@ -41,14 +38,9 @@ namespace NC.Wpf.App
             //var hostingEnvironment = context.Services.GetHostingEnvironment();
             //var configuration = context.Services.GetConfiguration();
 
-            Configure<AbpDbContextOptions>(options =>
-            {
-                options.UseSqlServer();
-            });
-
-            //Configure<AbpMultiTenancyOptions>(options =>
+            //Configure<AbpDbContextOptions>(options =>
             //{
-            //    options.IsEnabled = false;
+            //    options.UseSqlServer();
             //});
         }
 

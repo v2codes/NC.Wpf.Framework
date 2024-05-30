@@ -13,7 +13,7 @@ namespace NC.Wpf.Application.Contracts
         /// <summary>
         /// ID
         /// </summary>
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// 名称

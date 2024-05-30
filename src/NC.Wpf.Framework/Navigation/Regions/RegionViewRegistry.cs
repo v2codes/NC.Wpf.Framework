@@ -35,8 +35,14 @@ namespace NC.Wpf.Framework.Navigation.Regions
         /// </summary>
         public event EventHandler<ViewRegisteredEventArgs> ContentRegistered
         {
-            add => _contentRegisteredListeners.AddListener(value);
-            remove => _contentRegisteredListeners.RemoveListener(value);
+            add
+            {
+                _contentRegisteredListeners.AddListener(value);
+            }
+            remove
+            {
+                _contentRegisteredListeners.RemoveListener(value);
+            }
         }
 
         /// <summary>

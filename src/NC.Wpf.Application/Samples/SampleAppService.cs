@@ -1,38 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Domain.Repositories;
-using NC.Wpf.Application.Contracts;
+﻿using NC.Wpf.Application.Contracts;
 using NC.Wpf.Domain;
-using Volo.Abp.Threading;
+using NC.Wpf.SqlSugar.Repositories;
+using SqlSugar;
 
 namespace NC.Wpf.Application
 {
     public class SampleAppService : NCWpfAppService, ISampleAppService
     {
         private readonly IRepository<Sample> _sampleRepository;
+
         public SampleAppService(IRepository<Sample> sampleRepository)
         {
             _sampleRepository = sampleRepository;
         }
 
-        //private readonly INCDbContext _dbContext;
-        //public SampleAppService(INCDbContext dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
+        public async Task<SampleDto> CreateAsync()
+        {
+            var count = await _sampleRepository.CountAsync(p => 1 == 1);
+            var sample = new Sample()
+            {
+                Id = LongIdGenerator.NextId(),
+                Name = $"Sample_{DateTime.Now.ToString("yyyyMMddHHssmm")}",
+                Type = Domain.Shared.EnumSampleType.Information,
+                Sequence = count + 1,
+            };
+            await _sampleRepository.InsertAsync(sample);
+            var result = ObjectMapper.Map<Sample, SampleDto>(sample);
+            return result;
+        }
 
-        public async Task<SampleDto> GetAsync()
+        public async Task<SampleDto> GetFirstOrDefaultAsync()
         {
             try
             {
-                var sample = await _sampleRepository.FirstOrDefaultAsync();
-                sample.Name = $"{sample.Name}-{DateTime.Now.ToString("HHmmss")}";
-                await _sampleRepository.UpdateAsync(sample);
-
+                var sample = await _sampleRepository.GetFirstAsync(p => 1 == 1);
                 var result = ObjectMapper.Map<Sample, SampleDto>(sample);
                 return result;
             }
@@ -45,15 +46,22 @@ namespace NC.Wpf.Application
 
         public async Task<IEnumerable<SampleDto>> GetListAsync()
         {
-            var sampleList = await _sampleRepository.ToListAsync();
-            //var sampleList = await _dbContext.Samples.ToListAsync();
+            var sampleList = await _sampleRepository.GetListAsync();
             var result = ObjectMapper.Map<List<Sample>, List<SampleDto>>(sampleList);
             return result;
         }
 
-        public Task<SampleDto> GetByIdAsync()
+        public async Task<SampleDto> DeleteAsync()
         {
-            throw new NotImplementedException();
+            var lastRecord = await _sampleRepository.AsQueryable().OrderByDescending(p => p.Sequence).FirstAsync();
+            
+            // 物理删除
+            //await _sampleRepository.DeleteAsync(lastRecord);
+
+            // 逻辑删除
+            await _sampleRepository.SoftDeletedAsync(lastRecord);
+            var result = ObjectMapper.Map<Sample, SampleDto>(lastRecord);
+            return result;
         }
 
     }

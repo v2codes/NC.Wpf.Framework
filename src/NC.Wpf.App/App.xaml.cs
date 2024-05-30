@@ -57,6 +57,13 @@ namespace NC.Wpf.App
                 Thread.CurrentThread.CurrentCulture = cultureInfo;
 
                 await _abpApplication.InitializeAsync();
+                
+                // 窗口化应用需要在 STA 模式下运行，设置当前
+                //if (!Thread.CurrentThread.TrySetApartmentState(ApartmentState.STA))
+                //{
+                //    Thread.CurrentThread.SetApartmentState(ApartmentState.Unknown);
+                //    Thread.CurrentThread.SetApartmentState(ApartmentState.STA);
+                //}
 
                 // 入口窗体
                 var entryWindow = _abpApplication.Services.GetRequiredService<LoginWindow>();

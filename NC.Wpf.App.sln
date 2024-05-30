@@ -43,7 +43,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5FA068CD-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "src\WpfApp1\WpfApp1.csproj", "{54F1742F-8C90-445C-8216-B967450967BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NC.Wpf.ControlModule", "src\NC.Wpf.ControlModule\NC.Wpf.ControlModule.csproj", "{E0A1D108-75A8-410B-8CB4-23609E813713}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NC.Wpf.ControlModule", "src\NC.Wpf.ControlModule\NC.Wpf.ControlModule.csproj", "{E0A1D108-75A8-410B-8CB4-23609E813713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NC.Wpf.SqlSugar", "src\NC.Wpf.SqlSugar\NC.Wpf.SqlSugar.csproj", "{607478A5-6EA6-453E-BE28-81884CAB2DD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +117,10 @@ Global
 		{E0A1D108-75A8-410B-8CB4-23609E813713}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0A1D108-75A8-410B-8CB4-23609E813713}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0A1D108-75A8-410B-8CB4-23609E813713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607478A5-6EA6-453E-BE28-81884CAB2DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607478A5-6EA6-453E-BE28-81884CAB2DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607478A5-6EA6-453E-BE28-81884CAB2DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607478A5-6EA6-453E-BE28-81884CAB2DD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,13 +141,14 @@ Global
 		{AEFEA415-4866-4771-B3D8-5A2B00EF033C} = {DFD56E61-4BD0-4685-A913-C23359F9E762}
 		{54F1742F-8C90-445C-8216-B967450967BC} = {5FA068CD-C799-4F61-839A-36BCAB6A8698}
 		{E0A1D108-75A8-410B-8CB4-23609E813713} = {64E24576-A802-4B11-827D-3C7EE45395C7}
+		{607478A5-6EA6-453E-BE28-81884CAB2DD5} = {C517ED03-34A6-4C8A-8C2F-4C3622B446D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixFieldType = Value
-		RESX_PrefixTranslations = True
-		RESX_ConfirmAddLanguageFile = True
-		RESX_AutoCreateNewLanguageFiles = True
-		RESX_ResXSortingComparison = CurrentCulture
 		SolutionGuid = {D6BA2A54-21CE-4585-9B53-409613E03CBD}
+		RESX_ResXSortingComparison = CurrentCulture
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_ConfirmAddLanguageFile = True
+		RESX_PrefixTranslations = True
+		RESX_PrefixFieldType = Value
 	EndGlobalSection
 EndGlobal

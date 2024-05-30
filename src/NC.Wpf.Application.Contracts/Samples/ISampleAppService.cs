@@ -11,10 +11,12 @@ namespace NC.Wpf.Application.Contracts
     /// </summary>
     public interface ISampleAppService
     {
-        Task<SampleDto> GetAsync();
+        Task<SampleDto> CreateAsync();
+
+        Task<SampleDto> GetFirstOrDefaultAsync();
 
         Task<IEnumerable<SampleDto>> GetListAsync();
 
-        Task<SampleDto> GetByIdAsync();
+        Task<SampleDto> DeleteAsync();
     }
 }
