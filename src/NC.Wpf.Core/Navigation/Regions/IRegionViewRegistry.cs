@@ -15,7 +15,7 @@ namespace NC.Wpf.Core.Navigation.Regions
         /// This event uses weak references to the event handler to prevent this service (typically a singleton) of keeping the
         /// target element longer than expected.
         /// </remarks>
-        event EventHandler<ViewRegisteredEventArgs> ContentRegistered;
+        //event EventHandler<ViewRegisteredEventArgs> ContentRegistered;
 
         /// <summary>
         /// Returns the contents associated with a region name.

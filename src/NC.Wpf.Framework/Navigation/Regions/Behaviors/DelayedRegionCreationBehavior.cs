@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using CommunityToolkit.Mvvm.Messaging;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Properties;
-
 
 
 #if HAS_WINUI
@@ -69,7 +69,9 @@ namespace NC.Wpf.Framework.Navigation.Regions.Behaviors
         /// </summary>
         public void Attach()
         {
-            this.RegionManagerAccessor.UpdatingRegions += this.OnUpdatingRegions;
+            //this.RegionManagerAccessor.UpdatingRegions += this.OnUpdatingRegions;
+            WeakReferenceMessenger.Default.Register<object, string>(this, "UpdateRegionsMessage", OnUpdatingRegions);
+
             this.WireUpTargetElement();
         }
 
@@ -78,7 +80,9 @@ namespace NC.Wpf.Framework.Navigation.Regions.Behaviors
         /// </summary>
         public void Detach()
         {
-            this.RegionManagerAccessor.UpdatingRegions -= this.OnUpdatingRegions;
+            //this.RegionManagerAccessor.UpdatingRegions -= this.OnUpdatingRegions;
+            WeakReferenceMessenger.Default.Unregister<object, string>(this, "UpdateRegionsMessage");
+
             this.UnWireTargetElement();
         }
 
@@ -91,7 +95,8 @@ namespace NC.Wpf.Framework.Navigation.Regions.Behaviors
         /// <param name="sender">The <see cref="RegionManager"/>. </param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers", Justification = "This has to be public in order to work with weak references in partial trust or Silverlight environments.")]
-        public void OnUpdatingRegions(object sender, EventArgs e)
+        public void OnUpdatingRegions(object recipient, object message)
+        // public void OnUpdatingRegions(object sender, EventArgs e)
         {
             this.TryCreateRegion();
         }

@@ -1,21 +1,17 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
-using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
-using NC.Wpf.Core.Events;
+using CommunityToolkit.Mvvm.Messaging;
+//using NC.Wpf.Core.Events;
 using NC.Wpf.Core.Ioc;
 using NC.Wpf.Core.Navigation;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Common;
 using NC.Wpf.Framework.Navigation.Regions.Behaviors;
 using NC.Wpf.Framework.Properties;
-using CommunityToolkit.Mvvm.Messaging;
 
 
 #if HAS_WINUI
@@ -37,7 +33,7 @@ namespace NC.Wpf.Framework.Navigation.Regions
     {
         #region Static members (for XAML support)
 
-        private static readonly WeakDelegatesManager updatingRegionsListeners = new WeakDelegatesManager();
+        //private static readonly WeakDelegatesManager updatingRegionsListeners = new WeakDelegatesManager();
 
         /// <summary>
         /// Identifies the RegionName attached property.
@@ -213,14 +209,11 @@ namespace NC.Wpf.Framework.Navigation.Regions
         /// </summary>
         /// <remarks>This event uses weak references to the event handler to prevent this static event of keeping the
         /// target element longer than expected.</remarks>
-        public static event EventHandler UpdatingRegions
-        {
-            add
-            {
-                updatingRegionsListeners.AddListener(value);
-            }
-            remove { updatingRegionsListeners.RemoveListener(value); }
-        }
+        //public static event EventHandler UpdatingRegions
+        //{
+        //    add { updatingRegionsListeners.AddListener(value); }
+        //    remove { updatingRegionsListeners.RemoveListener(value); }
+        //}
 
         /// <summary>
         /// Notifies attached behaviors to update the region managers appropriately if needed to.
@@ -233,7 +226,8 @@ namespace NC.Wpf.Framework.Navigation.Regions
 
             try
             {
-                updatingRegionsListeners.Raise(null, EventArgs.Empty);
+                WeakReferenceMessenger.Default.Send<object, string>("UpdateRegionsMessage");
+                //updatingRegionsListeners.Raise(null, EventArgs.Empty);
             }
             catch (TargetInvocationException ex)
             {

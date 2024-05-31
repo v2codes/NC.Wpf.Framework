@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Volo.Abp.DependencyInjection;
 using NC.Wpf.Framework.Mvvm;
-using NC.AService.Contracts;
 using NC.Wpf.Core.Navigation.Regions;
 using System.Windows;
 using CommunityToolkit.Mvvm.Input;
@@ -19,11 +18,10 @@ namespace NC.Wpf.AModule.ViewModels
         [ObservableProperty]
         private string _helloWorld;
 
-        public AViewViewModel(IRegionManager regionManager,
-                              ISampleAppService sampleAppService)
+        public AViewViewModel(IRegionManager regionManager)
             : base(regionManager)
         {
-            HelloWorld = sampleAppService.Hello().Result;
+            HelloWorld = "Hello A Module";
         }
 
         [RelayCommand]

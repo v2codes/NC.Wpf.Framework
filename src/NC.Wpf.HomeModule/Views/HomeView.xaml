@@ -15,10 +15,15 @@
             <TextBlock Margin="20,0" FontSize="32" Text="{Binding HelloWorld}" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
             <Button Command="{Binding SendMessageToMainViewCommand}" Style="{StaticResource PrimaryButton}">
                 <TextBlock Text="发送消息" />
             </Button>
+
+            <Button Margin="20,0" Command="{Binding SendRequestMessageToMainViewCommand}" Style="{StaticResource PrimaryButton}">
+                <TextBlock Text="发送回调消息" />
+            </Button>
+            <TextBlock VerticalAlignment="Center" Text="{Binding ResponseOfRequestMessage}" />
             <!--<Button Width="100" Height="36" materialDesign:ButtonAssist.CornerRadius="18"
                     Command="{Binding SendMessageToMainViewCommand}"
                     Foreground="White"

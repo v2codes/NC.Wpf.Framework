@@ -5,13 +5,11 @@ using Volo.Abp.Modularity;
 using NC.Wpf.Framework;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.AModule.Views;
-using NC.AService;
 
 namespace NC.Wpf.AModule
 {
     [DependsOn(typeof(AbpAutofacModule),
-               typeof(NCWpfFrameworkModule),
-               typeof(NCAServiceContractsModule))]
+               typeof(NCWpfFrameworkModule))]
     public class NCWpfAModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

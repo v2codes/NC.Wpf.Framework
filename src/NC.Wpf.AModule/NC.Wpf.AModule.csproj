@@ -14,7 +14,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\NC.AService.Contracts\NC.AService.Contracts.csproj" />
 		<ProjectReference Include="..\NC.Wpf.Framework\NC.Wpf.Framework.csproj" />
 	</ItemGroup>
 </Project>

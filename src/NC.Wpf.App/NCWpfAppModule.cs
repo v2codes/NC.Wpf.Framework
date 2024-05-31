@@ -10,7 +10,6 @@ using NC.Wpf.Framework;
 using NC.Wpf.AModule;
 using NC.Wpf.ControlModule;
 using NC.Wpf.HomeModule;
-using NC.AService;
 using NC.Wpf.Application;
 using NC.Wpf.Application.Contracts;
 using NC.Wpf.App.Views;
@@ -25,7 +24,6 @@ namespace NC.Wpf.App
                typeof(NCWpfHomeModule),
                typeof(NCWpfAModule),
                typeof(NCWpfControlModule),
-               typeof(NCAServiceModule),
                //typeof(NCWpfEntityFrameworkCoreModule),
                //typeof(AbpEntityFrameworkCoreSqlServerModule),
                typeof(NCWpfSqlSugarModule),

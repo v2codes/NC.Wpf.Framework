@@ -16,10 +16,10 @@ namespace NC.Wpf.SqlSugar
             // 启用 AOT
             //StaticConfig.EnableAot = true;
 
-            // SqlSugar 配置服务
+            // 注入 SqlSugarClient 配置服务
             services.AddTransient<ISqlSugarDbConnectionCreator, SqlSugarDbConnectionCreator>();
 
-            // SqlSugar
+            // 注入 ISqlSugarClient
             services.AddTransient<ISqlSugarClient>(serviceProvider =>
             {
                 var sqlSugarDbConnectionCreator = serviceProvider.GetRequiredService<ISqlSugarDbConnectionCreator>();
@@ -34,10 +34,10 @@ namespace NC.Wpf.SqlSugar
                 return sqlSugar;
             });
 
-            // 仓储
+            // 注入仓储
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
-            // 种子服务
+            // 注入种子数据服务
             services.AddTransient<IDataSeeder, NCDataSeederContributor>();
 
             return services;

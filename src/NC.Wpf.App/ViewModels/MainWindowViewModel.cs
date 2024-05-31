@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Collections.ObjectModel;
+using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Volo.Abp.DependencyInjection;
 using NC.Wpf.Framework.Mvvm;
 using NC.Wpf.App.Models;
 using NC.Wpf.Core.Navigation.Regions;
-using NC.Wpf.Core.Navigation;
-using System.Collections.ObjectModel;
-using System.Text.Json;
+using NC.Wpf.Framework.Events;
 
 namespace NC.Wpf.App.ViewModels
 {
@@ -44,9 +40,6 @@ namespace NC.Wpf.App.ViewModels
             _regionManager = regionManager;
             MenuList = GetMenuList();
             CurrentMenuUrl = "HomeView";
-
-            // 启用 Message 接收
-            IsActive = true;
             ModuleMessage = "暂无消息";
         }
 
@@ -55,10 +48,29 @@ namespace NC.Wpf.App.ViewModels
         {
             //Register<>第一个类型一般是自己的类型,第2个是接收数据的类型
             //Register方法第1个参数一般是this,第2个参数是一个方法,可以获取接收到的值
-            Messenger.Register<MainWindowViewModel, string, string>(this, "ModuleMessageToken", (recipient, message) =>
+            Messenger.Register<MainWindowViewModel, string, string>(this, "ModuleMessageToken", OnReceiveModuleMessage);
+            Messenger.Register<MainWindowViewModel, RequestMessageBase, string>(this, "ModuleMessageToken", (_, m) =>
             {
-                ModuleMessage = message;
+                // 收到消息后，会进行简单的判断，并回复消息
+                ModuleMessage = m.Message;
+                m.Reply("MainWindow：已收到消息！");
             });
+        }
+
+        protected override void OnDeactivated()
+        {
+            Messenger.Unregister<string, string>(this, "ModuleMessageToken");
+            Messenger.Unregister<RequestMessageBase, string>(this, "ModuleMessageToken");
+        }
+
+        private void OnReceiveModuleMessage(object sender, string message)
+        {
+            FormatMessage(message);
+        }
+
+        private void FormatMessage(string msg)
+        {
+            ModuleMessage = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - {msg}";
         }
 
         [RelayCommand]

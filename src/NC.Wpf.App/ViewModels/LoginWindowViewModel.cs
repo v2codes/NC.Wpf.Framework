@@ -50,10 +50,13 @@ namespace NC.Wpf.App.ViewModels
                 return;
             }
             LoginLoading = true;
-
-            var result1 = await _sampleAppService.CreateAsync();
-            var result2 = await _sampleAppService.GetFirstOrDefaultAsync();
-            var result3 = await _sampleAppService.DeleteAsync();
+            
+            //// 新增
+            //var result1 = await _sampleAppService.CreateAsync();
+            //// 查询
+            //var result2 = await _sampleAppService.GetFirstOrDefaultAsync();
+            //// 删除
+            //var result3 = await _sampleAppService.DeleteAsync();
 
 
             if (Validate())

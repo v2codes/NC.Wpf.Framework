@@ -72,15 +72,9 @@ namespace NC.Wpf.SqlSugar
                 ConfigureExternalServices = new ConfigureExternalServices
                 {
                     //设置 CodeFirst 非空值判断
-                    EntityService = (c, p) =>
-                    {
-                        if (new NullabilityInfoContext().Create(c).WriteState is NullabilityState.Nullable)
-                        {
-                            p.IsNullable = true;
-                        }
+                    EntityService = EntityService,
 
-                        EntityService(c, p);
-                    },
+                    #region 兼容 TableAttribute、KeyAttribute、NotMappedAttribute 标注
                     //EntityService = (property, column) =>
                     //{
                     //    var attributes = property.GetCustomAttributes(true);//get all attributes 
@@ -104,6 +98,7 @@ namespace NC.Wpf.SqlSugar
                     //        entity.DbTableName = attr.Name;
                     //    }
                     //}
+                    #endregion
                 },
 
                 //这里多租户有个坑，无效的
@@ -163,13 +158,23 @@ namespace NC.Wpf.SqlSugar
         /// <param name="column"></param>
         public virtual void EntityService(PropertyInfo property, EntityColumnInfo column)
         {
-            //if (property.PropertyType == typeof(ExtraPropertyDictionary)) // ABP ExtraProperty
+            // ABP ExtraProperty
+            //if (property.PropertyType == typeof(ExtraPropertyDictionary)) 
             //{
             //    column.IsIgnore = true;
             //}
+
+            // 自动设置主键
             if (property.Name == nameof(Entity<object>.Id))
             {
                 column.IsPrimarykey = true;
+            }
+
+            // 自动创建可控类型
+            if (column.IsPrimarykey == false 
+                && new NullabilityInfoContext().Create(property).WriteState is NullabilityState.Nullable)
+            {
+                column.IsNullable = true;
             }
         }
 

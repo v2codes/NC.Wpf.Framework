@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CommunityToolkit.Mvvm.Messaging;
 using NC.Wpf.Core.Ioc;
 using NC.Wpf.Core.Navigation.Regions;
 
@@ -49,7 +50,8 @@ namespace NC.Wpf.Framework.Navigation.Regions.Behaviors
                 AddViewIntoRegion(view);
             }
 
-            this.regionViewRegistry.ContentRegistered += this.OnViewRegistered;
+            //this.regionViewRegistry.ContentRegistered += this.OnViewRegistered;
+            WeakReferenceMessenger.Default.Register<ViewRegisteredEventArgs, string>(this, "ContentRegisteredMessage", OnViewRegistered);
         }
 
         /// <summary>

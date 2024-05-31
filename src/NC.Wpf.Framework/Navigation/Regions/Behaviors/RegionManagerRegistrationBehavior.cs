@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Properties;
+using CommunityToolkit.Mvvm.Messaging;
 
 
 #if HAS_WINUI
@@ -90,7 +91,9 @@ namespace NC.Wpf.Framework.Navigation.Regions.Behaviors
 
         private void StartMonitoringRegionManager()
         {
-            this.RegionManagerAccessor.UpdatingRegions += this.OnUpdatingRegions;
+            // this.RegionManagerAccessor.UpdatingRegions += this.OnUpdatingRegions;
+            WeakReferenceMessenger.Default.Register<object, string>(this, "UpdateRegionsMessage", OnUpdatingRegions);
+
             this.TryRegisterRegion();
         }
 
@@ -127,7 +130,8 @@ namespace NC.Wpf.Framework.Navigation.Regions.Behaviors
         /// <param name="sender">The sender.</param>
         /// <param name="e">The arguments.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2109:ReviewVisibleEventHandlers", Justification = "This has to be public in order to work with weak references in partial trust or Silverlight environments.")]
-        public void OnUpdatingRegions(object sender, EventArgs e)
+        public void OnUpdatingRegions(object recipient, object message)
+        // public void OnUpdatingRegions(object sender, EventArgs e)
         {
             this.TryRegisterRegion();
         }

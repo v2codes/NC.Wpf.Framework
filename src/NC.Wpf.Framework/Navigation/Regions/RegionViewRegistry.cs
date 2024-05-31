@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using CommunityToolkit.Mvvm.Messaging;
 using NC.Wpf.Core.Common;
-using NC.Wpf.Core.Events;
+//using NC.Wpf.Core.Events;
 using NC.Wpf.Core.Ioc;
 using NC.Wpf.Core.Navigation.Regions;
 using NC.Wpf.Framework.Common;
@@ -19,7 +20,7 @@ namespace NC.Wpf.Framework.Navigation.Regions
     {
         private readonly IServiceProvider _container;
         private readonly ListDictionary<string, Func<IServiceProvider, object>> _registeredContent = new ListDictionary<string, Func<IServiceProvider, object>>();
-        private readonly WeakDelegatesManager _contentRegisteredListeners = new WeakDelegatesManager();
+        //private readonly WeakDelegatesManager _contentRegisteredListeners = new WeakDelegatesManager();
 
         /// <summary>
         /// Creates a new instance of the <see cref="RegionViewRegistry"/> class.
@@ -33,17 +34,11 @@ namespace NC.Wpf.Framework.Navigation.Regions
         /// <summary>
         /// Occurs whenever a new view is registered.
         /// </summary>
-        public event EventHandler<ViewRegisteredEventArgs> ContentRegistered
-        {
-            add
-            {
-                _contentRegisteredListeners.AddListener(value);
-            }
-            remove
-            {
-                _contentRegisteredListeners.RemoveListener(value);
-            }
-        }
+        //public event EventHandler<ViewRegisteredEventArgs> ContentRegistered
+        //{
+        //    add { _contentRegisteredListeners.AddListener(value); }
+        //    remove { _contentRegisteredListeners.RemoveListener(value); }
+        //}
 
         /// <summary>
         /// Returns the contents registered for a region.
@@ -110,7 +105,8 @@ namespace NC.Wpf.Framework.Navigation.Regions
         {
             try
             {
-                _contentRegisteredListeners.Raise(this, e);
+                WeakReferenceMessenger.Default.Send(e, "ContentRegisteredMessage");
+                //_contentRegisteredListeners.Raise(this, e);
             }
             catch (TargetInvocationException ex)
             {

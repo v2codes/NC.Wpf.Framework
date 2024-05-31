@@ -16,11 +16,11 @@ namespace NC.Wpf.Framework.Navigation.Regions
         /// </summary>
         /// <remarks>This event uses weak references to the event handler to prevent this static event of keeping the
         /// target element longer than expected.</remarks>
-        public event EventHandler UpdatingRegions
-        {
-            add { RegionManager.UpdatingRegions += value; }
-            remove { RegionManager.UpdatingRegions -= value; }
-        }
+        //public event EventHandler UpdatingRegions
+        //{
+        //    add { RegionManager.UpdatingRegions += value; }
+        //    remove { RegionManager.UpdatingRegions -= value; }
+        //}
 
         /// <summary>
         /// Gets the value for the RegionName attached property.

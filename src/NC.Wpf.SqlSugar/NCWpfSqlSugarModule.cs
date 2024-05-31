@@ -32,7 +32,6 @@ namespace NC.Wpf.SqlSugar
 
         public override async Task OnPreApplicationInitializationAsync(ApplicationInitializationContext context)
         {
-            //进行CodeFirst
             var options = context.ServiceProvider.GetRequiredService<IOptions<SqlSugarOptions>>().Value;
             var _logger = context.ServiceProvider.GetRequiredService<ILogger<NCWpfSqlSugarModule>>();
 
@@ -45,13 +44,15 @@ namespace NC.Wpf.SqlSugar
             sb.AppendLine($"CodeFirst：{options.CodeFirst}");
             //sb.AppendLine($"MultiTenancy：{options.EnabledSaasMultiTenancy}");
             sb.AppendLine("===============================");
-
             _logger.LogInformation(sb.ToString());
 
+            // 创建数据库、表
             //if (options.CodeFirst)
             //{
             //    context.ServiceProvider.CreateDatabase();
             //}
+            
+            // 初始化种子数据
             //if (options.DataSeed)
             //{
             //    await context.ServiceProvider.DataSeedAsync();
